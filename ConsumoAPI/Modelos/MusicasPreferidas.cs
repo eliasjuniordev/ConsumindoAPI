@@ -51,6 +51,20 @@ namespace ConsumoAPI.Modelos
             Console.WriteLine($"O Arquivo Json foi Criado com Sucesso !!! {Path.GetFullPath(nomeDoArquivo)}");
 
         }
-        
+
+        public void GerarDocumentoTXTComAsMusicasFavoritas()
+        {
+            string nomeDoArquivo = $"musicas-favoritas-{Nome}.txt";
+            using (StreamWriter arquivo = new StreamWriter(nomeDoArquivo))
+            {
+                arquivo.WriteLine($"Músicas favoritas do {Nome}\n");
+                foreach (var musica in ListaDeMusicasFavoritas)
+                {
+                    arquivo.WriteLine($"- {musica.Artista}");
+                }
+            }
+            Console.WriteLine($"txt gerado com sucesso!{Path.GetFullPath(nomeDoArquivo)}");
+        }
+
     }
 }
